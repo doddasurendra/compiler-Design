@@ -1,0 +1,29 @@
+%{
+/* Definitions section */
+#include <stdio.h>
+%}
+
+/* Regular expressions and rules section */
+%%
+"=="    { printf("Relational Operator: ==\n"); }
+"!="    { printf("Relational Operator: !=\n"); }
+"<="    { printf("Relational Operator: <=\n"); }
+">="    { printf("Relational Operator: >=\n"); }
+"<"     { printf("Relational Operator: <\n"); }
+">"     { printf("Relational Operator: >\n"); }
+
+[a-zA-Z]+   { printf("Word: %s\n", yytext); }
+
+.           { /* Ignore all other characters */ }
+%%
+
+/* Main function */
+int yywrap() {
+    return 1;
+}
+
+/* Main program */
+int main() {
+    yylex();
+    return 0;
+}
